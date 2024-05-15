@@ -1,0 +1,29 @@
+def write_non_divisible_by_3_to_file(input_file, output_file):
+    with open(input_file, 'r') as f_in:
+        numbers = f_in.read().split()
+    
+    non_divisible_by_3 = []
+    for number in numbers:
+        number = int(number)
+        if number % 3 != 0:
+            non_divisible_by_3.append(number)
+    
+    with open(output_file, 'w') as f_out:
+        for number in non_divisible_by_3:
+            f_out.write(str(number) + '\n')
+        
+    return non_divisible_by_3
+
+def calculate_average(numbers):
+    if len(numbers) == 0:
+        return 0
+    return sum(numbers) / len(numbers)
+
+input_filename = "input.txt"
+output_filename = "output.txt"
+
+non_divisible_by_3 = write_non_divisible_by_3_to_file(input_filename, output_filename)
+average = calculate_average(non_divisible_by_3)
+
+print("3-ə bölünməyən ədədlər yeni fayla yazıldı:", output_filename)
+print("3-ə bölünməyən ədədlərin ortalaması:", average)
